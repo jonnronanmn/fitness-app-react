@@ -1,0 +1,298 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Simple dark navbar matching register page */
+.custom-navbar {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 0.6rem 1rem;
+  position: relative;
+  z-index: 10; /* ensures navbar is above overlay */
+}
+
+/* Navbar brand */
+.custom-navbar .navbar-brand {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.custom-navbar .navbar-brand:hover {
+  color: #ffdd59;
+}
+
+/* Nav links */
+.custom-navbar .nav-link {
+  color: #fff;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffdd59;
+}
+
+/* Active link highlight */
+.custom-navbar .nav-link.active {
+  font-weight: bold;
+  color: #ffdd59 !important;
+}
+
+/* Logout button */
+.custom-navbar .btn-light {
+  background-color: #ffdd59;
+  color: #000;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.custom-navbar .btn-light:hover {
+  background-color: #e6c84d;
+  color: #000;
+}
+
+/* Full page background image */
+.register-page {
+  background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* removes unwanted scroll */
+  position: relative;
+}
+
+/* Optional overlay to make text readable */
+.register-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+  pointer-events: none; /* allow clicks through overlay */
+}
+
+/* Panels appear above overlay */
+.hero-bg-panel, .hero-form {
+  position: relative;
+  z-index: 1;
+}
+
+/* Left text panel */
+.hero-bg-panel {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #ffdd59;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* Form card */
+.hero-form {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 50px 30px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  max-width: 100%;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Form inputs */
+.hero-form input.form-control {
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+.hero-form button {
+  border-radius: 12px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* Login link */
+.login-link {
+  color: #2a5298;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-bg-panel {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+/* Full page login background */
+.login-page {
+  background: url('https://wallpapers.com/images/hd/fitness-women-training-artwork-c1zb7hrbqjv73jzn.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Optional dark overlay */
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Form card above overlay */
+.hero-form.login-card {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #ffffffcc, #f0f0f0cc);
+  border-radius: 25px;
+  padding: 50px 30px;
+  box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-form.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+}
+
+.login-title {
+  font-weight: 700;
+  color: #2a2a2a;
+}
+
+/* Form inputs */
+.hero-form input.form-control {
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-form input.form-control:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 10px rgba(42,82,152,0.3);
+}
+
+/* Form button */
+.login-btn {
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+  background: #2a5298;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+  background: #1e3c72;
+  transform: translateY(-2px);
+}
+
+/* Links */
+.login-link {
+  color: #2a5298;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-form.login-card {
+    padding: 30px 20px;
+  }
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.card-text {
+  color: #555;
+}
