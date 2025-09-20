@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Notyf } from "notyf";
@@ -16,6 +16,32 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // On component mount, check if token exists and fetch profile
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch(`${API_URL}/users/profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.user) {
+            setUser({ id: data.user._id, isAdmin: data.user.isAdmin });
+            navigate("/workouts");
+          } else {
+            localStorage.removeItem("token");
+          }
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+        });
+    }
+  }, [navigate, setUser]);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
