@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Workout from "./pages/Workout";
 
-const API_BASE = process.env.REACT_APP_API_URL; // use .env variable
+const API_BASE = process.env.REACT_APP_API_URL;
 
 function App() {
   const [user, setUser] = useState({ id: null, isAdmin: null });
@@ -56,6 +56,11 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+        
+          <Route
+            path="/"
+            element={user.id ? <Navigate to="/workouts" /> : <Navigate to="/register" />}
+          />
           <Route
             path="/login"
             element={user.id ? <Navigate to="/workouts" /> : <Login />}
@@ -68,6 +73,8 @@ function App() {
             path="/workouts"
             element={user.id ? <Workout /> : <Navigate to="/login" />}
           />
+          {/* Catch-all redirect */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </UserContext.Provider>
